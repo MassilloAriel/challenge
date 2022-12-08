@@ -32,3 +32,10 @@
         }
     }
 }
+
+@media only screen and (max-width: 768px) { 
+    button {
+        display:block;
+        margin-top: 5px;
+    }
+}

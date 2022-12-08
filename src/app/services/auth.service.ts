@@ -15,7 +15,7 @@ export class AuthService {
 
   login(credentials:any):{error:boolean, token: string} {
 
-    if (credentials.username === 'admin' && credentials.password === 'password') {
+    if (credentials.username.toLowerCase() === 'admin' && credentials.password === 'password') {
       return {error: false, token: 'sid12345'}
     }
     return {error:true, token: ''};

@@ -71,3 +71,16 @@
         opacity: 1;
     }
  } 
+
+ @media only screen and (max-width: 768px) {
+    .wrapper {
+        form {
+            max-width: 80%;
+            div {
+                input[type="text"], input[type="password"] {
+                    width: 100%;
+                }
+            }
+        }
+    }
+ }
