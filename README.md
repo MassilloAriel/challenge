@@ -20,3 +20,7 @@ When searching by zip code, both city and zip code are added to the table.\
 
 While running `ng serve` the console will output some logs. \
 This is just for development. The logger service checks if the environment "production" flag is set to false.
+
+## Demo
+<a href="https://www.youtube.com/watch?v=wAedzagbI28" title="Demo">Demo (Youtube)</a>
+
