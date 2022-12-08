@@ -1,0 +1,52 @@
+<div id="wrapper">
+    <div id="monitor">
+        <div *ngIf="monitors.length == 0"><p>Get started by making a search</p></div>
+
+        <app-search (save)="createMonitor($event)"></app-search>
+        
+        <div id="list" *ngIf="monitors.length">
+            <table>
+                <tr>
+                    <th>City</th>
+                    <th>Zip code</th>
+                    <th>Temp (F°)</th>
+                    <th>Notifications</th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let mon of monitors; let i = index">
+                    <td>{{mon.city}}</td>
+                    <td>{{mon.zip}}</td>
+                    <td>{{mon.last_temp_registered ? mon.last_temp_registered : 'No data yet'}}</td>
+                    <td>
+                        <input type="checkbox" name="notification" id="notification" [checked]="mon.notify" (click)="updateMonitorConfig(mon.id, {notify: check.checked})" #check>
+
+                        <div *ngIf="mon.notify">
+                            <div>
+                                <span>Every</span>
+                                <input type="number" name="interval" id="interval" min="1" [value]="mon.refresh_interval" (change)="updateMonitorConfig(mon.id, {refresh_interval: interval.value})" #interval>
+                                <span>{{mon.refresh_interval == 1 ? 'minute' : 'minutes'}}</span>
+                            </div>
+                            <div>
+                                <span>Alert temperature:</span>
+                                <select name="alert_criteria" id="alert_criteria" [value]="mon.alert_criteria" (change)="updateMonitorConfig(mon.id, {alert_criteria: criteria.value})" #criteria>
+                                    <option value=">"> > </option>
+                                    <option value="<"> < </option>
+                                    <option value="="> = </option>
+                                </select>
+                                <input type="number" name="alert_temp" id="alert_temp" [value]="mon.alert_temp" (change)="updateMonitorConfig(mon.id, {alert_temp: alert_temp.value})" #alert_temp>
+                                <span> (F°)</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td id="favorite">
+                        <img [src]="mon.favorite ? 'assets/icons/star_fill.svg' : 'assets/icons/star.svg'" alt="" (click)="updateMonitorConfig(mon.id, {favorite: !mon.favorite})">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<app-alert *ngIf="alert.show">
+    {{alert.message}}
+</app-alert>

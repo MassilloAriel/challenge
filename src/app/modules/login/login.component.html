@@ -1,0 +1,17 @@
+<div class="wrapper" [ngClass]="{'fadein': fadein}">
+    <form (submit)="onSubmit()" [formGroup]="form" [ngClass]="{'shake': doShake, 'fadeout': fadeout}">
+        <div class="form-div">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" formControlName="username" autocomplete="off">
+            <div class="err" *ngIf="submitted && !form.controls.username.valid">Please provide a valid username</div>
+        </div>
+        <div class="form-div">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" formControlName="password" autocomplete="off">
+            <div class="err" *ngIf="submitted && !form.controls.password.valid">Please provide a valid password</div>
+        </div>
+        <div class="form-div">
+            <input type="submit" value="Login">
+        </div>
+    </form>
+</div>

@@ -1,0 +1,13 @@
+<div id="form">
+    <form (ngSubmit)="onSubmit()" [formGroup]="searchForm">
+        <div id="search">
+            <input type="text" name="search" id="search" placeholder="Search by city or zip code" formControlName="search">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+    
+    <div id="text">
+        <div id="message" *ngIf="message.length">{{message}}</div>
+        <div id="cta" *ngIf="match.city.length" (click)="onMonitorAdd()">Click here to add it to the monitors</div>
+    </div>
+</div>

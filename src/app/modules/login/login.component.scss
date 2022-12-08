@@ -1,0 +1,73 @@
+.wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    position: absolute;
+    top:0px;
+    form {
+        padding: 20px;
+        background-color: #f3f3f3;
+        border-radius: 10px;
+        box-shadow: 0px 5px 5px #0000004f;
+        div:not(.err) {
+            margin: 20px 0px;
+            label {
+                display: block;
+            }
+            input[type="text"], input[type="password"] {
+                font-size: 1.6rem;
+                padding: 3px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 2px black inset;
+            };
+            input[type="submit"] {
+                font-size: 1.6rem;
+                color: #2c3e50;
+                cursor:pointer;
+                background-color: #8A9EA0;
+                color: white;
+                border-radius: 5px;
+                border: 1px solid transparent;
+                padding: 5px 10px;
+                &:active {
+                    border: 2px solid grey;
+                }
+            }
+            .err {
+                color: rgb(172, 0, 0);
+            }
+        }
+    }
+
+    form.shake { 
+        -webkit-animation-name: shake; 
+        animation-name: shake; 
+        animation-duration: .5s;
+     }
+}
+
+.fadeout {
+    animation: .5s fadein ease-in-out forwards reverse; 
+}
+
+.fadein {
+    animation: .5s fadein ease-in-out forwards; 
+}
+
+@keyframes shake {
+    0%, 100% {transform: translateX(0);} 
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);} 
+    20%, 40%, 60%, 80% {transform: translateX(10px);} 
+ } 
+
+ @keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+ } 
